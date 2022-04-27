@@ -1,4 +1,4 @@
-# 🚢 Projeto_Redes-1 
+# 🚢 Projeto_Redes-1 - Batalha Naval
 
 ## Projeto de Redes de Computadores 1 (2021.2)
 
