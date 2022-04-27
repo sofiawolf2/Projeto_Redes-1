@@ -5,6 +5,6 @@
 ## Membros do grupo:
 
 * Levi Vidal Feitosa: @levi0112 (https://github.com/levi0112)
-* Pedro Oliveira
+* Pedro Augusto L. F. Oliveira: @pedro-oliveira446 (https://github.com/pedro-oliveira446)
 * Sofia Alencar Uchôa de Queiroz: @sofiawolf2 (https://github.com/sofiawolf2)
 
