@@ -1,30 +1,30 @@
 import socket
-#import base64
 
-h = open('index.html', 'r') # abrindo e lendo o html
-homepage = h.read()
+h = open('index.html', 'r') # abrindo e lendo o html, h será a variável que receberá o site 
+homepage = h.read() #homepage lê o site e recebe a versão string dele
 
-s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
-print(s)
+s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) #abrindo o socket
 
-s.bind(('', 12000))
-s.listen(5) # quer manter uma fila de 5 conecções, dessa forma ate 5 pessoas podem ficar esperando 
+s.bind(('', 12000)) # definindo 12000 como a porta do socket local 
+s.listen(1)  
 
-while True:
-    conn, addr = s.accept() # aceita a conecção quando alguem entrar no site
-    # conn = socket de coneccão. tipo um "ponteiro" que aponta pra quem ta querendo conectar
+while True: # roda enquanto tiver conexão
+    conn, addr = s.accept() # aceita a conexão quando alguem entrar no site
+    # conn = socket de conexão. tipo um "ponteiro" que aponta pra quem ta querendo conectar
     # addr = endereço de quem ta tentando se conectar
 
     data = conn.recv(2000) # o recv recebe os dados de quem está requisitando
+    # 2000 é o número máx de bytes aceitos
     
     P = data.split(b' ') #GET / HTTP/1.0 -> [GET, /, HTTP/1.0]
-    #print(P)
+    # p vai armazenar os dados recebidos na variavel data, separados por espaços
+
     if P[0] == b'GET':
-        #print(P[0])
+
         if P[1] == b'/': #se não tiver nada depois do /, significa que o usuário está procurando a página inicial. Nesse caso, retornamos a pag 
-            #print(P[1])
+
             resp = ('HTTP/1.0 200 OK\r\n' + 'Content-Type: text/html\r\n' + 'Content-Length: ' + str(len(homepage)) + '\r\n\r\n' + (homepage))
-            # como resposta ele manda: protocolo http + código da respo (200) + ok (mensagem do codigo) + tipo do conteudo (content-type), falando se é imagem html etc
+            # como resposta ele manda: protocolo http + código da resposta (200) + ok (mensagem do codigo) + tipo do conteudo (content-type), falando se é imagem html etc
             # + tamanho do conteudo (content-length), a quantidade de bytes q ele tem + depois de 2 pular linha, o conteúdo em si, ou seja a página. 
             # Se fosse uma imagem, seria uma imagem. nesse caso é a página.
             resp = str.encode(resp) #encode() é uma função que transforma a string em byte
