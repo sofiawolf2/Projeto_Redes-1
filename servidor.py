@@ -49,5 +49,5 @@ while True: # roda enquanto tiver conexão
 
                 # O código n estava conseguindo rodar pois n tava conseguindo concatenar string + bytes. Nesse caso, transformamos tudo em byte
     
-    conn.close()
-s.close()
+    conn.close() # fecha a conexão
+s.close() # fecha o socket
