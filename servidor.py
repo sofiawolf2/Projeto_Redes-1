@@ -1,13 +1,10 @@
 import socket
 
-print("INCICIO");
-
 h = open('index.html', 'r') # abrindo e lendo o html, h será a variável que receberá o site 
 homepage = h.read() #homepage lê o site e recebe a versão string dele
 
-# abrindo o socket , onde na função passamos 2 argumentos, AF_INET que declara a família do protocolo , SOCKET_STREAM, indica que será TCP/IP
-
 s = socket.socket(socket.AF_INET, socket.SOCK_STREAM) 
+# abrindo o socket , onde na função passamos 2 argumentos, AF_INET que declara a família do protocolo , SOCKET_STREAM, indica que será TCP/IP
 
 s.bind(('', 12000)) # Esta linha define para qual IP e porta o servidor deve aguardar a conexão, que no nosso caso é qualquer IP, por isso o Host é ”
 
@@ -20,7 +17,7 @@ while True: # roda enquanto tiver conexão
 
     data = conn.recv(2000) # o recv recebe os dados de quem está requisitando
     # 2000 é o número máx de bytes aceitos
-    print(data);
+
     P = data.split(b' ') #GET / HTTP/1.0 -> [GET, /, HTTP/1.0]
     # p vai armazenar os dados recebidos na variavel data, separados por espaços
 
